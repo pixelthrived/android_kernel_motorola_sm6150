@@ -87,17 +87,8 @@ struct usbnet {
 #		define EVENT_LINK_CHANGE	11
 #		define EVENT_SET_RX_MODE	12
 #		define EVENT_NO_IP_ALIGN	13
-#		define USBNET_DISCONNECT	14
-#		define USBNET_LINK		15
-	void			*ipc_log_ctxt;
-	int			netdev_id;
-
-#ifdef CONFIG_DRM_MSM
-	struct notifier_block 	panel_usb_notifier;
-	struct work_struct	panel_update_work;
-	u32			panel_state;
-	int 			last_panel_state;
-#endif
+	u32			rx_speed;	/* in bps - NOT Mbps */
+	u32			tx_speed;	/* in bps - NOT Mbps */
 };
 
 static inline struct usb_driver *driver_of(struct usb_interface *intf)
